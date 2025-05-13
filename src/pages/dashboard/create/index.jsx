@@ -8,7 +8,7 @@ const Create = () => {
    const [color, setColor] = useState("");
    const [desc, setDesc] = useState("");
    const [url, setUrl] = useState("");
-   const image = "https://openshop.uz/storage/uploads/products/photos/202505/OYSlmrnve5fS3n0yEyvQaROcIMFvCUC7fWettD9K.jpg";
+   const image = "";
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -22,56 +22,66 @@ const Create = () => {
 
       api.post("/product", newPrd)
          .then((res) => {
-            toast.success("Product created successfully 👌");
+            toast.success("Product created successfully ");
             setName("");
             setPrice("");
-            setColor("");
             setDesc("");
             setUrl("");
          })
          .catch((err) => {
-            toast.error("Something wrong bro 🤷‍♂️");
+            toast.error("Something wrong ");
          })
          .finally();
    };
 
    return (
-      <div className="flex flex-col h-screen justify-between items-center">
-         <div className="w-full h-[100px] py-3 text-center text-amber-50 bg-blue-950 border">
-            <h1 className="text-3xl">Create product</h1>
+      <div className="flex flex-col h-screen justify-between items-center bg-gray-50">
+         <div className="w-full h-[120px] py-3 text-center ">
+            <h1 className="text-4xl font-semibold">Create Product</h1>
          </div>
-         <div className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full flex-1 pt-5">
-            <form className="max-w-md mx-auto space-y-5 px-3 mt-4 w-[500px]" onSubmit={handleSubmit}>
+         <div className="shadow-lg bg-white rounded-lg w-full flex-1 pt-5">
+            <form className="max-w-md mx-auto space-y-6 px-5 mt-6 w-[500px]" onSubmit={handleSubmit}>
                <div>
-                  <label className="mb-2 text-sm text-slate-900 font-medium block">Name</label>
-                  <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter name" className="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
+                  <label className="mb-2 text-sm text-gray-700 font-medium block">Name</label>
+                  <input
+                     required
+                     value={name}
+                     onChange={(e) => setName(e.target.value)}
+                     type="text"
+                     placeholder="Enter product name"
+                     className="px-4 py-3 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all text-sm"
+                  />
+               </div>
+
+
+               <div>
+                  <label className="mb-2 text-sm text-gray-700 font-medium block">Image URL</label>
+                  <input
+                     value={url}
+                     onChange={(e) => setUrl(e.target.value)}
+                     type="text"
+                     placeholder="Enter image URL"
+                     className="px-4 py-3 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all text-sm"
+                  />
                </div>
 
                <div>
-                  <label className="mb-2 text-sm text-slate-900 font-medium block">Price</label>
-                  <input required value={price} onChange={(e) => setPrice(e.target.value)} type="number" placeholder="Enter number" className="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
+                  <label className="mb-2 text-sm text-gray-700 font-medium block">Description</label>
+                  <textarea
+                     value={desc}
+                     onChange={(e) => setDesc(e.target.value)}
+                     placeholder="Enter description"
+                     className="px-4 py-3 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 transition-all text-sm"
+                  />
                </div>
 
-               <div>
-                  <label className="mb-2 text-sm text-slate-900 font-medium block">Color</label>
-                  <input required value={color} onChange={(e) => setColor(e.target.value)} type="text" placeholder="Enter color" className="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
-               </div>
-
-               <div>
-                  <label className="mb-2 text-sm text-slate-900 font-medium block">Img url</label>
-                  <input value={url} onChange={(e) => setUrl(e.target.value)} type="text" placeholder="Enter url" className="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
-               </div>
-
-               <div>
-                  <label className="mb-2 text-sm text-slate-900 font-medium block">Description</label>
-                  <textarea value={desc} onChange={(e) => setDesc(e.target.value)} type="text" placeholder="Enter description" className="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
-               </div>
-
-               <button className="!mt-8 px-6 py-2.5 text-sm font-medium bg-[#333] hover:bg-[#222] text-white rounded-sm cursor-pointer">Create</button>
+               <button className="mt-6 px-6 py-3 text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg w-full transition-all ease-in-out duration-300">
+                  Create
+               </button>
             </form>
          </div>
       </div>
    );
 };
 
-export default Create;  
+export default Create;

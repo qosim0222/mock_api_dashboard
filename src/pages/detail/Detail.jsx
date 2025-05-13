@@ -13,7 +13,7 @@ const Detail = () => {
    }, []);
 
    useEffect(() => {
-      api.get(`/products/${id}`)
+      api.get(`/product/${id}`)
          .then((res) => {
             setData(res.data);
          })

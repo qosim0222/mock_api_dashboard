@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
-import Product from "./dashboard/product/Product";
-import Create from "./dashboard/create";
 import Detail from "./detail/Detail";
+import Create from "./dashboard/create";
+import Product from "./dashboard/product/Product";
 
 const Layout = lazy(() => import("./layout/Layout"));
 
